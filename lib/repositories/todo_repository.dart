@@ -22,8 +22,12 @@ class TodoRepository{
  Future<List<TodoItem>?> getListTodoItem() async {
   var instance = await getInstance();
   var jsonText = instance.getString('todoList');
-  var jsonAsList = json.decode(jsonText!) as List;
-  return null;
+  if(jsonText != null){
+  var jsonAsList = json.decode(jsonText) as List;
+  return jsonAsList.map((e) => TodoItem.fromJson(e)).toList();
+
+  }
+  return [];
   // return jsonAsList.map((e) => TodoItem.fromJson(e)).toList();
 
  }

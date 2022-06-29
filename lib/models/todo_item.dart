@@ -4,14 +4,14 @@ class TodoItem{
 
   TodoItem.fromJson(Map<String, dynamic> json){
     title = json['title'];
-    date = json['date'];
+    date = DateTime.parse(json['date']);
   }
   
 
   Map<String, dynamic> toJson(){
     return {
       'title': title,
-      'date': date
+      'date': date?.toIso8601String()
     };
   }
 

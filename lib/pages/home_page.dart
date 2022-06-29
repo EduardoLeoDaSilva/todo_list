@@ -22,7 +22,9 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     TodoRepository().getListTodoItem().then((value) {
       if(value != null) {
+        setState(() {
         todoList.addAll(value);
+        });
       }
     });
   }
